@@ -319,7 +319,7 @@ export default function Hero() {
                   fontWeight: 500,
                 }}
               >
-                Available for Internships
+              
               </span>
             </div>
 
