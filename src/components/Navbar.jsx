@@ -230,7 +230,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#" className="nav-logo" onClick={() => handleNav("")}>
           <div className="logo-dot" />
-          Harsh<span>.</span>
+          Home
         </a>
 
         {/* Desktop links */}
