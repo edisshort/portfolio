@@ -91,9 +91,10 @@ export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
 
   const roles = [
-    "AI & Frontend Developer",
+    "AI & Backend Developer",
     "Computer Engineering Student",
     "Full-Stack Enthusiast",
+    "Open Source Contributor",
   ];
 
   const name = useScramble("Harsh Solanki", nameReady, 1400);
@@ -216,10 +217,43 @@ export default function Hero() {
         .avatar-ring {
           animation: pulse-ring 2.4s ease-out infinite;
         }
+
+        @media (max-width: 768px) {
+          .hero-wrapper {
+            padding: 80px 20px 40px !important;
+            align-items: flex-start !important;
+            overflow-y: auto !important;
+          }
+          .hero-card {
+            flex-direction: column-reverse !important;
+            padding: 32px 24px !important;
+            gap: 28px !important;
+            align-items: center !important;
+          }
+          .hero-photo {
+            width: 160px !important;
+            height: 200px !important;
+          }
+          .hero-name {
+            font-size: 36px !important;
+          }
+          .hero-bio {
+            font-size: 13.5px !important;
+          }
+          .hero-btns {
+            flex-direction: column !important;
+            width: 100% !important;
+          }
+          .hero-btn-primary, .hero-btn-secondary {
+            width: 100% !important;
+            justify-content: center !important;
+          }
+        }
       `}</style>
 
       {/* Hero wrapper — sits ON TOP of LiquidEther (position absolute) */}
       <div
+        className="hero-wrapper"
         style={{
           position: "absolute",
           inset: 0,
@@ -229,10 +263,12 @@ export default function Hero() {
           padding: "40px 48px",
           fontFamily: "'DM Sans', sans-serif",
           zIndex: 10,
+          overflowY: "auto",
         }}
       >
         {/* Glass card */}
         <div
+          className="hero-card"
           style={{
             ...fadeIn(0),
             width: "100%",
@@ -274,11 +310,22 @@ export default function Hero() {
                   display: "inline-block",
                 }}
               />
-              
+              <span
+                style={{
+                  fontSize: 11,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "#B19EEF",
+                  fontWeight: 500,
+                }}
+              >
+                Available for Internships
+              </span>
             </div>
 
             {/* Name */}
             <h1
+              className="hero-name"
               style={{
                 ...fadeIn(0.25),
                 margin: "0 0 10px",
@@ -332,6 +379,7 @@ export default function Hero() {
 
             {/* Bio */}
             <p
+              className="hero-bio"
               style={{
                 ...fadeIn(0.4),
                 margin: "0 0 28px",
@@ -352,6 +400,7 @@ export default function Hero() {
 
             {/* CTAs */}
             <div
+              className="hero-btns"
               style={{
                 ...fadeIn(0.5),
                 display: "flex",
@@ -406,11 +455,21 @@ export default function Hero() {
                   </svg>
                 }
               />
+              <SocialLink
+                href="https://twitter.com/"
+                label="Twitter / X"
+                icon={
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                }
+              />
             </div>
           </div>
 
           {/* ── RIGHT: Full photo ── */}
           <div
+            className="hero-photo"
             style={{
               ...fadeIn(0.3),
               flexShrink: 0,
