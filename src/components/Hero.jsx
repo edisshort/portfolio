@@ -319,7 +319,7 @@ export default function Hero() {
                   fontWeight: 500,
                 }}
               >
-              
+                Available for Opportunities
               </span>
             </div>
 
@@ -500,7 +500,7 @@ export default function Hero() {
               backdropFilter: "blur(8px)",
               border: "1px solid rgba(255,255,255,0.15)",
             }}>
-              ✦ Open to Work
+              Open to Work
             </div>
           </div>
         </div>

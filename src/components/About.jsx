@@ -15,10 +15,39 @@ function useInView(threshold = 0.1) {
 }
 
 const highlights = [
-  { icon: "🤖", text: "Passionate about AI, LLMs and building intelligent systems" },
-  { icon: "⚙️", text: "Frontend passion — building interfaces that feel smooth and look great" },
-  { icon: "🚀", text: "Love turning ideas into working software from scratch" },
-  { icon: "📚", text: "Always learning — currently deep in LangChain and vector DBs" },
+  {
+    icon: (
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+      </svg>
+    ),
+    text: "Passionate about AI, LLMs and building intelligent systems",
+  },
+  {
+    icon: (
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+      </svg>
+    ),
+    text: "Frontend passion — building interfaces that feel smooth and look great",
+  },
+  {
+    icon: (
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+      </svg>
+    ),
+    text: "Love turning ideas into working software from scratch",
+  },
+  {
+    icon: (
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+      </svg>
+    ),
+    text: "Always learning — currently deep in RAG pipelines and vector databases",
+  },
 ];
 
 export default function About() {
@@ -127,9 +156,10 @@ export default function About() {
           transform: translateY(-3px);
         }
         .highlight-icon {
-          font-size: 22px;
           flex-shrink: 0;
           margin-top: 1px;
+          color: #B19EEF;
+          opacity: 0.8;
         }
         .highlight-text {
           font-size: 13.5px;
@@ -162,10 +192,10 @@ export default function About() {
               idea and turn it into something real and useful.
             </p>
             <p className="bio-p">
-              My focus is on <em>AI and backend development</em>. I work mostly with <em>Python,
-              FastAPI, and Django</em>, and lately I've been going deep into <em>LLMs and AI-powered
-              applications</em> — building things like voice assistants, intelligent APIs, and
-              systems that actually think.
+              My focus is on <em>AI and backend development</em>. I work mostly with <em>Python
+              and FastAPI</em>, and lately I've been going deep into <em>LLMs and AI-powered
+              applications</em> — building things like voice assistants, multimodal RAG systems, and
+              intelligent APIs that actually think.
             </p>
             <p className="bio-p">
               I'm the kind of person who learns best by building. Whether it's a hackathon project,

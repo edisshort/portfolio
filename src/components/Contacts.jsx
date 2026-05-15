@@ -417,7 +417,16 @@ export default function Contact() {
             <div className="contact-form" style={fadeUp(0.2)}>
               {status === "sent" ? (
                 <div className="success-state">
-                  <div style={{ fontSize: 56 }}>🎉</div>
+                  <div style={{
+                    width: 56, height: 56, borderRadius: "50%",
+                    background: "rgba(34,197,94,0.15)",
+                    border: "1px solid rgba(34,197,94,0.35)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                  }}>
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                  </div>
                   <h3 style={{
                     fontFamily: "'Space Grotesk', sans-serif",
                     fontSize: 22, fontWeight: 700, color: "#fff", margin: 0,
@@ -536,7 +545,7 @@ export default function Contact() {
           {/* Footer */}
           <div className="footer-line" style={fadeUp(0.4)}>
             <p>Designed & built by <span>Harsh Solanki</span> · {new Date().getFullYear()}</p>
-            <p style={{ marginTop: 4 }}>Built with <span>React</span> · <span>Vite</span> · <span>LiquidEther</span> · ☕</p>
+            <p style={{ marginTop: 4 }}>Built with <span>React</span> · <span>Vite</span> · <span>LiquidEther</span></p>
           </div>
 
         </div>

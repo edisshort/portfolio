@@ -14,49 +14,84 @@ function useInView(threshold = 0.1) {
   return [ref, inView];
 }
 
+const CloudIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+  </svg>
+);
+const CodeIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+  </svg>
+);
+const TerminalIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+  </svg>
+);
+const DatabaseIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+  </svg>
+);
+const GlobeIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+  </svg>
+);
+
 const certs = [
   {
-    title: "AWS Cloud Practitioner",
+    title: "AWS Cloud Practitioner Essentials",
     issuer: "Amazon Web Services",
-    emoji: "☁️",
+    icon: <CloudIcon />,
     color: "#FF9900",
-    border: "rgba(255,153,0,0.3)",
+    border: "rgba(255,153,0,0.28)",
     bg: "rgba(255,153,0,0.07)",
     tag: "Cloud",
   },
   {
+    title: "Introduction to IoT & Digital Transformation",
+    issuer: "Cisco Networking Academy",
+    icon: <GlobeIcon />,
+    color: "#3ecf8e",
+    border: "rgba(62,207,142,0.28)",
+    bg: "rgba(62,207,142,0.07)",
+    tag: "IoT & Networking",
+  },
+  {
     title: "C++ Certified Associate",
     issuer: "C++ Institute",
-    emoji: "⚙️",
+    icon: <CodeIcon />,
     color: "#5227FF",
-    border: "rgba(82,39,255,0.3)",
+    border: "rgba(82,39,255,0.28)",
     bg: "rgba(82,39,255,0.07)",
     tag: "Programming",
   },
   {
     title: "Java Programming",
     issuer: "Spoken Tutorial — IIT Bombay",
-    emoji: "☕",
+    icon: <TerminalIcon />,
     color: "#B19EEF",
-    border: "rgba(177,158,239,0.3)",
+    border: "rgba(177,158,239,0.28)",
     bg: "rgba(177,158,239,0.07)",
     tag: "Programming",
   },
   {
     title: "Python Programming",
     issuer: "Spoken Tutorial — IIT Bombay",
-    emoji: "🐍",
+    icon: <CodeIcon />,
     color: "#3ecf8e",
-    border: "rgba(62,207,142,0.3)",
+    border: "rgba(62,207,142,0.28)",
     bg: "rgba(62,207,142,0.07)",
     tag: "Programming",
   },
   {
     title: "PHP & MySQL",
     issuer: "Spoken Tutorial — IIT Bombay",
-    emoji: "🗄️",
+    icon: <DatabaseIcon />,
     color: "#FF9FFC",
-    border: "rgba(255,159,252,0.3)",
+    border: "rgba(255,159,252,0.28)",
     bg: "rgba(255,159,252,0.07)",
     tag: "Web & Database",
   },
@@ -152,12 +187,11 @@ export default function Certifications() {
         .cert-card:hover {
           transform: translateY(-4px);
         }
-        .cert-emoji {
-          font-size: 32px;
+        .cert-icon {
           flex-shrink: 0;
-          width: 52px;
-          height: 52px;
-          border-radius: 14px;
+          width: 48px;
+          height: 48px;
+          border-radius: 13px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -217,10 +251,10 @@ export default function Certifications() {
                 onMouseLeave={e => e.currentTarget.style.boxShadow = `0 0 0 rgba(0,0,0,0)`}
               >
                 <div
-                  className="cert-emoji"
-                  style={{ background: cert.bg, border: `1px solid ${cert.border}` }}
+                  className="cert-icon"
+                  style={{ background: cert.bg, border: `1px solid ${cert.border}`, color: cert.color }}
                 >
-                  {cert.emoji}
+                  {cert.icon}
                 </div>
                 <div>
                   <p className="cert-title">{cert.title}</p>

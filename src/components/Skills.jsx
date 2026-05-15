@@ -20,28 +20,28 @@ const categories = [
     color: "#5227FF",
     border: "rgba(82,39,255,0.4)",
     bg: "rgba(82,39,255,0.12)",
-    skills: ["Python", "Java", "C", "C++", "JavaScript", "CSS", "SQL"],
+    skills: ["Python", "JavaScript", "TypeScript", "C", "SQL"],
   },
   {
     label: "Frontend",
     color: "#B19EEF",
     border: "rgba(177,158,239,0.4)",
     bg: "rgba(177,158,239,0.1)",
-    skills: ["React", "CSS", "HTML"],
+    skills: ["React.js", "Next.js 14", "HTML5", "CSS3", "Tailwind CSS"],
   },
   {
-    label: "AI & Cloud",
+    label: "Backend & AI",
     color: "#FF9FFC",
     border: "rgba(255,159,252,0.4)",
     bg: "rgba(255,159,252,0.1)",
-    skills: ["LLMs", "AWS", "Prompt Engineering"],
+    skills: ["FastAPI", "REST APIs", "RAG", "Groq API", "Ollama", "PyTorch", "ChromaDB", "BM25", "Web Speech API"],
   },
   {
     label: "Tools",
     color: "#7B5CF0",
     border: "rgba(123,92,240,0.4)",
     bg: "rgba(123,92,240,0.12)",
-    skills: ["Git", "GitHub"],
+    skills: ["Git", "GitHub", "Docker", "Vercel", "Render", "VS Code"],
   },
 ];
 

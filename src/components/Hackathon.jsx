@@ -107,16 +107,16 @@ export default function Hackathon() {
           align-items: center;
           gap: 12px;
         }
-        .hack-emoji-wrap {
-          width: 72px;
-          height: 72px;
-          border-radius: 20px;
-          background: rgba(82,39,255,0.15);
-          border: 1px solid rgba(82,39,255,0.35);
+        .hack-icon-wrap {
+          width: 56px;
+          height: 56px;
+          border-radius: 16px;
+          background: rgba(82,39,255,0.12);
+          border: 1px solid rgba(82,39,255,0.28);
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 36px;
+          color: #B19EEF;
         }
         .hack-badge {
           padding: 4px 12px;
@@ -212,41 +212,89 @@ export default function Hackathon() {
             <p className="section-sub">Where ideas meet deadlines.</p>
           </div>
 
-          {/* Card */}
+          {/* Card 1 — GoaShore */}
           <div className="hack-card" style={fadeUp(0.15)}>
             <div className="hack-left">
-              <div className="hack-emoji-wrap">🧠</div>
-              <div className="hack-badge">Participant</div>
-            </div>
-
-            <div className="hack-right">
-              <h3 className="hack-name">Binary Beasts — Team 18</h3>
-              <p className="hack-venue">📍 Saraswati College of Engineering, Navi Mumbai</p>
-
-              <p className="hack-desc">
-                Participated in a intercollegiate hackathon as part of <em>Team Binary Beasts</em>.
-                Our team tackled a real-world problem statement of Smart City within a time-boxed environment,
-                designing and building a working solution from scratch. The experience pushed us
-                to think fast, collaborate under pressure, and ship something functional within
-                the deadline — a strong test of both technical and teamwork skills.
-              </p>
-
-              <div className="hack-tech">
-                {["Python", "JavaScript", "HTML/CSS", "Git", "Team Collaboration"].map(t => (
-                  <span key={t}>{t}</span>
-                ))}
+              <div className="hack-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>
+                </svg>
               </div>
+              <div className="hack-badge">Solo · Mar 2026</div>
+            </div>
+            <div className="hack-right">
+              <h3 className="hack-name">GoaShore</h3>
+              <p className="hack-venue">Beach Cleanliness Reporting Platform</p>
+              <p className="hack-desc">
+                Enabled <em>real-time pollution reporting</em> for coastal citizens by building a React civic-tech platform with
+                geo-tagged submissions, a live dashboard, and toast notifications — shipped solo within a single hackathon day.
+              </p>
+              <div className="hack-tech">
+                {["React.js", "JavaScript", "CSS"].map(t => <span key={t}>{t}</span>)}
+              </div>
+              <a href="https://goashore.vercel.app" target="_blank" rel="noopener noreferrer" className="hack-github">
+                Live Demo
+                <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                  <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
 
-              <a
-                href="https://github.com/edisshort/binary-beasts-18"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hack-github"
-              >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+          {/* Card 2 — Reform Helper */}
+          <div className="hack-card" style={fadeUp(0.25)}>
+            <div className="hack-left">
+              <div className="hack-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/>
+                </svg>
+              </div>
+              <div className="hack-badge">Solo · Feb 2026</div>
+            </div>
+            <div className="hack-right">
+              <h3 className="hack-name">Reform Helper</h3>
+              <p className="hack-venue">Accessibility-First Web Platform</p>
+              <p className="hack-desc">
+                Streamlined reform/help processes for <em>non-technical users</em> by delivering a fully responsive web platform
+                with accessible UI and dynamic navigation — built and presented solo within a 24-hour hackathon window.
+              </p>
+              <div className="hack-tech">
+                {["HTML", "CSS", "JavaScript"].map(t => <span key={t}>{t}</span>)}
+              </div>
+              <a href="https://github.com/edisshort/reform-helper" target="_blank" rel="noopener noreferrer" className="hack-github">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" />
                 </svg>
-                View on GitHub
+                GitHub
+              </a>
+            </div>
+          </div>
+
+          {/* Card 3 — Binary Beasts */}
+          <div className="hack-card" style={fadeUp(0.35)}>
+            <div className="hack-left">
+              <div className="hack-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+              </div>
+              <div className="hack-badge">Team · 2024</div>
+            </div>
+            <div className="hack-right">
+              <h3 className="hack-name">Binary Beasts — Team 18</h3>
+              <p className="hack-venue">Smart City Web Application</p>
+              <p className="hack-desc">
+                Delivered a Smart City frontend solution in a team of 3 by owning <em>UI design and interactive components</em>,
+                prototyping and presenting a structured working app within a 48-hour hackathon window.
+              </p>
+              <div className="hack-tech">
+                {["HTML", "CSS", "JavaScript"].map(t => <span key={t}>{t}</span>)}
+              </div>
+              <a href="https://github.com/edisshort/binary-beasts-18" target="_blank" rel="noopener noreferrer" className="hack-github">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+                GitHub
               </a>
             </div>
           </div>
