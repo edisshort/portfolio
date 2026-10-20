@@ -15,190 +15,93 @@ function useInView(threshold = 0.1) {
 }
 
 const categories = [
-  {
-    label: "Languages",
-    color: "#5227FF",
-    border: "rgba(82,39,255,0.4)",
-    bg: "rgba(82,39,255,0.12)",
-    skills: ["Python", "JavaScript", "TypeScript", "C", "SQL"],
-  },
-  {
-    label: "Frontend",
-    color: "#B19EEF",
-    border: "rgba(177,158,239,0.4)",
-    bg: "rgba(177,158,239,0.1)",
-    skills: ["React.js", "Next.js 14", "HTML5", "CSS3", "Tailwind CSS"],
-  },
-  {
-    label: "Backend & AI",
-    color: "#FF9FFC",
-    border: "rgba(255,159,252,0.4)",
-    bg: "rgba(255,159,252,0.1)",
-    skills: ["FastAPI", "REST APIs", "RAG", "Groq API", "Ollama", "PyTorch", "ChromaDB", "BM25", "Web Speech API"],
-  },
-  {
-    label: "Tools",
-    color: "#7B5CF0",
-    border: "rgba(123,92,240,0.4)",
-    bg: "rgba(123,92,240,0.12)",
-    skills: ["Git", "GitHub", "Docker", "Vercel", "Render", "VS Code"],
-  },
+  { label: "Frontend", skills: ["React.js", "Next.js 14", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS"] },
+  { label: "Backend & APIs", skills: ["FastAPI", "REST APIs", "Python"] },
+  { label: "Databases & Search", skills: ["MongoDB", "MongoDB Search", "ChromaDB", "Vector Embeddings", "BM25", "RAG"] },
+  { label: "AI / LLM", skills: ["Groq API", "Ollama", "PyTorch", "Semantic Search", "Web Speech API"] },
+  { label: "Languages & Tools", skills: ["Python", "JavaScript", "C", "SQL", "Git", "Docker", "Vercel", "Render"] },
 ];
 
 export default function Skills() {
   const [sectionRef, inView] = useInView(0.05);
-
   const fadeUp = (delay = 0) => ({
     opacity: inView ? 1 : 0,
-    transform: inView ? "translateY(0)" : "translateY(28px)",
-    transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
+    transform: inView ? "translateY(0)" : "translateY(20px)",
+    transition: `opacity 0.65s ease ${delay}s, transform 0.65s ease ${delay}s`,
   });
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap');
-
         .skills-section {
           width: 100%;
-          padding: 100px 48px;
-          font-family: 'DM Sans', sans-serif;
+          padding: 96px 48px;
+          font-family: var(--font-body);
         }
         .skills-inner {
-          max-width: 860px;
+          max-width: 1200px;
           margin: 0 auto;
           display: flex;
           flex-direction: column;
-          gap: 52px;
+          gap: 36px;
         }
-        .section-label {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 4px 14px;
-          background: rgba(82,39,255,0.15);
-          border: 1px solid rgba(177,158,239,0.25);
-          border-radius: 50px;
-          font-size: 11px;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: #B19EEF;
-          font-weight: 500;
-          margin-bottom: 14px;
+        .skill-row {
+          display: grid;
+          grid-template-columns: 180px 1fr;
+          gap: 20px;
+          padding: 20px 0;
+          border-top: 1.5px solid var(--border);
+          align-items: start;
         }
-        .section-label::before {
-          content: '';
-          width: 6px; height: 6px;
-          border-radius: 50%;
-          background: #B19EEF;
-          box-shadow: 0 0 8px #B19EEF;
-        }
-        .section-title {
-          font-family: 'Space Grotesk', sans-serif;
-          font-size: 46px;
+        .skill-row:last-child { border-bottom: 1.5px solid var(--border); }
+        .skill-cat {
+          font-family: var(--font-display);
+          font-size: 14px;
           font-weight: 700;
-          color: #fff;
-          letter-spacing: -0.025em;
-          line-height: 1.15;
-          margin: 0 0 6px;
+          color: var(--accent);
+          padding-top: 4px;
         }
-        .section-title span {
-          background: linear-gradient(135deg, #5227FF, #B19EEF);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        .section-sub {
-          font-size: 16px;
-          color: rgba(200,188,230,0.6);
-          margin: 0;
-          line-height: 1.7;
-        }
-        .cat-block {
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-        }
-        .cat-heading {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          font-size: 12px;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          font-weight: 600;
-        }
-        .cat-line {
-          flex: 1;
-          height: 1px;
-          background: rgba(177,158,239,0.1);
-        }
-        .badge-row {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 10px;
-        }
-        .skill-badge {
-          padding: 9px 20px;
-          border-radius: 50px;
-          font-size: 14.5px;
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-tag {
+          padding: 7px 14px;
+          font-size: 13.5px;
           font-weight: 500;
-          cursor: default;
+          color: var(--text);
+          border: 1.5px solid var(--border);
+          background: var(--surface);
+          border-radius: 6px;
           transition: all 0.2s ease;
-          white-space: nowrap;
-          color: rgba(230,220,255,0.92) !important;
-          background: rgba(10,4,28,0.6) !important;
         }
-        .skill-badge:hover {
-          transform: translateY(-3px);
-          color: #fff !important;
-          background: rgba(82,39,255,0.2) !important;
+        .skill-tag:hover {
+          border-color: var(--accent);
+          color: var(--accent);
         }
-        @media (max-width: 600px) {
-          .skills-section { padding: 80px 24px; }
-          .section-title { font-size: 34px; }
+        @media (max-width: 640px) {
+          .skills-section { padding: 72px 24px; }
+          .skill-row { grid-template-columns: 1fr; gap: 10px; }
         }
       `}</style>
 
       <section className="skills-section" ref={sectionRef} id="skills">
         <div className="skills-inner">
-
-          {/* Heading */}
           <div style={fadeUp(0)}>
-            <div className="section-label">Skills</div>
-            <h2 className="section-title">What I <span>Know</span></h2>
-            <p className="section-sub">Technologies I work with.</p>
+            <div className="section-eyebrow">Skills</div>
+            <h2 className="section-heading">What I <em>use</em></h2>
+            <p className="section-lede">Tools from the stack I ship with every week.</p>
           </div>
 
-          {/* Categories */}
-          {categories.map((cat, ci) => (
-            <div key={cat.label} className="cat-block" style={fadeUp(0.1 + ci * 0.08)}>
-              <div className="cat-heading">
-                <span style={{ color: cat.color }}>{cat.label}</span>
-                <div className="cat-line" />
+          <div style={fadeUp(0.08)}>
+            {categories.map((cat) => (
+              <div key={cat.label} className="skill-row">
+                <div className="skill-cat">{cat.label}</div>
+                <div className="skill-tags">
+                  {cat.skills.map((skill) => (
+                    <span key={skill} className="skill-tag">{skill}</span>
+                  ))}
+                </div>
               </div>
-              <div className="badge-row">
-                {cat.skills.map((skill, si) => (
-                  <span
-                    key={skill}
-                    className="skill-badge"
-                    style={{
-                      borderLeft: `3px solid ${cat.color}`,
-                      borderTop: `1px solid rgba(177,158,239,0.15)`,
-                      borderRight: `1px solid rgba(177,158,239,0.15)`,
-                      borderBottom: `1px solid rgba(177,158,239,0.15)`,
-                      opacity: inView ? 1 : 0,
-                      transform: inView ? "translateY(0)" : "translateY(12px)",
-                      transition: `opacity 0.5s ease ${0.15 + ci * 0.08 + si * 0.05}s, transform 0.5s ease ${0.15 + ci * 0.08 + si * 0.05}s`,
-                    }}
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-
+            ))}
+          </div>
         </div>
       </section>
     </>

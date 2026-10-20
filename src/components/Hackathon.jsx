@@ -14,291 +14,151 @@ function useInView(threshold = 0.1) {
   return [ref, inView];
 }
 
+const hacks = [
+  {
+    name: "GoaShore",
+    venue: "Beach Cleanliness Reporting Platform",
+    badge: "Solo · Mar 2026",
+    desc: "Real-time pollution reporting civic-tech platform with geo-tagged submissions and a live dashboard — shipped solo in one hackathon day.",
+    tech: ["React.js", "JavaScript", "CSS"],
+    href: "https://goashore.vercel.app",
+    linkLabel: "Live Demo",
+  },
+  {
+    name: "Reform Helper",
+    venue: "Accessibility-First Web Platform",
+    badge: "Solo · Feb 2026",
+    desc: "Responsive web platform with accessible UI for non-technical users — built and presented solo in 24 hours.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    href: "https://github.com/edisshort/reform-helper",
+    linkLabel: "GitHub",
+  },
+  {
+    name: "Binary Beasts — Team 18",
+    venue: "Smart City Web Application",
+    badge: "Team · 2024",
+    desc: "Smart City frontend in a team of 3 — owned UI design and interactive components within a 48-hour window.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    href: "https://github.com/edisshort/binary-beasts-18",
+    linkLabel: "GitHub",
+  },
+];
+
 export default function Hackathon() {
   const [sectionRef, inView] = useInView(0.1);
-
   const fadeUp = (delay = 0) => ({
     opacity: inView ? 1 : 0,
-    transform: inView ? "translateY(0)" : "translateY(28px)",
-    transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
+    transform: inView ? "translateY(0)" : "translateY(24px)",
+    transition: `opacity 0.65s ease ${delay}s, transform 0.65s ease ${delay}s`,
   });
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap');
-
         .hack-section {
           width: 100%;
-          padding: 0px 48px 100px;
-          font-family: 'DM Sans', sans-serif;
+          padding: 0 48px 96px;
+          font-family: var(--font-body);
         }
         .hack-inner {
-          max-width: 860px;
+          max-width: 1200px;
           margin: 0 auto;
           display: flex;
           flex-direction: column;
-          gap: 36px;
+          gap: 28px;
         }
-        .section-label {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 4px 14px;
-          background: rgba(82,39,255,0.15);
-          border: 1px solid rgba(177,158,239,0.25);
-          border-radius: 50px;
-          font-size: 11px;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: #B19EEF;
-          font-weight: 500;
-          margin-bottom: 14px;
+        .hack-row {
+          padding: 26px 0;
+          border-top: 1.5px solid var(--border);
+          display: grid;
+          grid-template-columns: 1fr auto;
+          gap: 20px;
         }
-        .section-label::before {
-          content: '';
-          width: 6px; height: 6px;
-          border-radius: 50%;
-          background: #B19EEF;
-          box-shadow: 0 0 8px #B19EEF;
-        }
-        .section-title {
-          font-family: 'Space Grotesk', sans-serif;
-          font-size: 46px;
-          font-weight: 700;
-          color: #fff;
-          letter-spacing: -0.025em;
-          line-height: 1.15;
-          margin: 0 0 6px;
-        }
-        .section-title span {
-          background: linear-gradient(135deg, #5227FF, #B19EEF);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        .section-sub {
-          font-size: 16px;
-          color: rgba(200,188,230,0.6);
-          margin: 0;
-          line-height: 1.7;
-        }
-        .hack-card {
-          background: rgba(10,4,28,0.5);
-          border: 1px solid rgba(82,39,255,0.3);
-          border-radius: 20px;
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          padding: 36px 40px;
-          display: flex;
-          gap: 32px;
-          align-items: flex-start;
-          transition: all 0.25s ease;
-        }
-        .hack-card:hover {
-          border-color: rgba(82,39,255,0.55);
-          box-shadow: 0 8px 40px rgba(82,39,255,0.2);
-          transform: translateY(-4px);
-        }
-        .hack-left {
-          flex-shrink: 0;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 12px;
-        }
-        .hack-icon-wrap {
-          width: 56px;
-          height: 56px;
-          border-radius: 16px;
-          background: rgba(82,39,255,0.12);
-          border: 1px solid rgba(82,39,255,0.28);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #B19EEF;
-        }
-        .hack-badge {
-          padding: 4px 12px;
-          background: rgba(82,39,255,0.15);
-          border: 1px solid rgba(82,39,255,0.35);
-          border-radius: 50px;
-          font-size: 11px;
-          color: #B19EEF;
-          font-weight: 600;
-          letter-spacing: 0.05em;
-          white-space: nowrap;
-          text-align: center;
-        }
-        .hack-right {
-          flex: 1;
-          min-width: 0;
-        }
+        .hack-row:last-child { border-bottom: 1.5px solid var(--border); }
         .hack-name {
-          font-family: 'Space Grotesk', sans-serif;
+          font-family: var(--font-display);
           font-size: 22px;
-          font-weight: 700;
-          color: #fff;
+          font-weight: 800;
+          color: var(--text);
           margin: 0 0 4px;
           letter-spacing: -0.02em;
         }
         .hack-venue {
           font-size: 13.5px;
-          color: #B19EEF;
-          font-weight: 500;
-          margin: 0 0 16px;
+          color: var(--accent);
+          font-weight: 600;
+          margin: 0 0 10px;
         }
         .hack-desc {
-          font-size: 15px;
-          line-height: 1.8;
-          color: rgba(210,198,240,0.75);
-          margin: 0 0 20px;
+          font-size: 14.5px;
+          line-height: 1.7;
+          color: var(--muted);
+          margin: 0 0 14px;
+          max-width: 640px;
         }
-        .hack-desc em {
-          color: #B19EEF;
-          font-style: normal;
-          font-weight: 500;
-        }
-        .hack-tech {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-          margin-bottom: 24px;
-        }
+        .hack-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
         .hack-tech span {
-          padding: 5px 14px;
-          background: rgba(82,39,255,0.1);
-          border: 1px solid rgba(177,158,239,0.2);
-          border-radius: 50px;
-          font-size: 12.5px;
-          color: rgba(210,200,240,0.8);
-          font-weight: 500;
+          padding: 4px 11px;
+          border: 1.5px solid var(--border);
+          border-radius: 4px;
+          font-size: 12px;
+          color: var(--muted);
+          background: var(--surface);
         }
-        .hack-github {
+        .hack-link {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          padding: 10px 22px;
-          background: rgba(82,39,255,0.15);
-          border: 1px solid rgba(177,158,239,0.25);
-          border-radius: 50px;
+          gap: 6px;
+          padding: 9px 16px;
+          background: var(--accent);
+          border-radius: 6px;
           color: #fff;
-          font-size: 13.5px;
-          font-weight: 500;
+          font-size: 13px;
+          font-weight: 700;
           text-decoration: none;
           transition: all 0.2s;
-          font-family: 'DM Sans', sans-serif;
         }
-        .hack-github:hover {
-          background: rgba(82,39,255,0.3);
-          border-color: rgba(177,158,239,0.5);
+        .hack-link:hover {
+          background: var(--accent-hover);
           transform: translateY(-2px);
         }
-        @media (max-width: 640px) {
-          .hack-section { padding: 0 24px 80px; }
-          .hack-card { flex-direction: column; padding: 24px; }
-          .hack-left { flex-direction: row; align-items: center; }
-          .section-title { font-size: 34px; }
+        .hack-badge {
+          font-size: 12px;
+          color: var(--muted-soft);
+          font-weight: 500;
+          white-space: nowrap;
+          padding-top: 4px;
+        }
+        @media (max-width: 700px) {
+          .hack-section { padding: 0 24px 72px; }
+          .hack-row { grid-template-columns: 1fr; gap: 8px; }
         }
       `}</style>
 
       <section className="hack-section" ref={sectionRef} id="hackathon">
         <div className="hack-inner">
-
-          {/* Heading */}
           <div style={fadeUp(0)}>
-            <div className="section-label">Hackathon</div>
-            <h2 className="section-title">Built Under <span>Pressure</span></h2>
-            <p className="section-sub">Where ideas meet deadlines.</p>
+            <div className="section-eyebrow">Hackathons</div>
+            <h2 className="section-heading">Built under <em>pressure</em></h2>
+            <p className="section-lede">Where ideas meet deadlines.</p>
           </div>
 
-          {/* Card 1 — GoaShore */}
-          <div className="hack-card" style={fadeUp(0.15)}>
-            <div className="hack-left">
-              <div className="hack-icon-wrap">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>
-                </svg>
+          {hacks.map((h, i) => (
+            <div key={h.name} className="hack-row" style={fadeUp(0.08 + i * 0.07)}>
+              <div>
+                <h3 className="hack-name">{h.name}</h3>
+                <p className="hack-venue">{h.venue}</p>
+                <p className="hack-desc">{h.desc}</p>
+                <div className="hack-tech">
+                  {h.tech.map((t) => <span key={t}>{t}</span>)}
+                </div>
+                <a href={h.href} target="_blank" rel="noopener noreferrer" className="hack-link">
+                  {h.linkLabel} →
+                </a>
               </div>
-              <div className="hack-badge">Solo · Mar 2026</div>
+              <div className="hack-badge">{h.badge}</div>
             </div>
-            <div className="hack-right">
-              <h3 className="hack-name">GoaShore</h3>
-              <p className="hack-venue">Beach Cleanliness Reporting Platform</p>
-              <p className="hack-desc">
-                Enabled <em>real-time pollution reporting</em> for coastal citizens by building a React civic-tech platform with
-                geo-tagged submissions, a live dashboard, and toast notifications — shipped solo within a single hackathon day.
-              </p>
-              <div className="hack-tech">
-                {["React.js", "JavaScript", "CSS"].map(t => <span key={t}>{t}</span>)}
-              </div>
-              <a href="https://goashore.vercel.app" target="_blank" rel="noopener noreferrer" className="hack-github">
-                Live Demo
-                <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-                  <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          {/* Card 2 — Reform Helper */}
-          <div className="hack-card" style={fadeUp(0.25)}>
-            <div className="hack-left">
-              <div className="hack-icon-wrap">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/>
-                </svg>
-              </div>
-              <div className="hack-badge">Solo · Feb 2026</div>
-            </div>
-            <div className="hack-right">
-              <h3 className="hack-name">Reform Helper</h3>
-              <p className="hack-venue">Accessibility-First Web Platform</p>
-              <p className="hack-desc">
-                Streamlined reform/help processes for <em>non-technical users</em> by delivering a fully responsive web platform
-                with accessible UI and dynamic navigation — built and presented solo within a 24-hour hackathon window.
-              </p>
-              <div className="hack-tech">
-                {["HTML", "CSS", "JavaScript"].map(t => <span key={t}>{t}</span>)}
-              </div>
-              <a href="https://github.com/edisshort/reform-helper" target="_blank" rel="noopener noreferrer" className="hack-github">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" />
-                </svg>
-                GitHub
-              </a>
-            </div>
-          </div>
-
-          {/* Card 3 — Binary Beasts */}
-          <div className="hack-card" style={fadeUp(0.35)}>
-            <div className="hack-left">
-              <div className="hack-icon-wrap">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                </svg>
-              </div>
-              <div className="hack-badge">Team · 2024</div>
-            </div>
-            <div className="hack-right">
-              <h3 className="hack-name">Binary Beasts — Team 18</h3>
-              <p className="hack-venue">Smart City Web Application</p>
-              <p className="hack-desc">
-                Delivered a Smart City frontend solution in a team of 3 by owning <em>UI design and interactive components</em>,
-                prototyping and presenting a structured working app within a 48-hour hackathon window.
-              </p>
-              <div className="hack-tech">
-                {["HTML", "CSS", "JavaScript"].map(t => <span key={t}>{t}</span>)}
-              </div>
-              <a href="https://github.com/edisshort/binary-beasts-18" target="_blank" rel="noopener noreferrer" className="hack-github">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" />
-                </svg>
-                GitHub
-              </a>
-            </div>
-          </div>
-
+          ))}
         </div>
       </section>
     </>
